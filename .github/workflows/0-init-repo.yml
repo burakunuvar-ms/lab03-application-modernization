@@ -1,0 +1,47 @@
+name: Initialize Repository
+
+# Runs once when the repo is first created from the template.
+# Replaces {{full_repo_name}} placeholder in README.md with the
+# actual owner/repo so the Codespaces badge and verification line
+# point to the student's own copy.
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  init:
+    name: Replace template placeholders
+    runs-on: ubuntu-latest
+    # Skip on the template repo itself; only run on student copies
+    if: "!github.event.repository.is_template"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Replace {{full_repo_name}} placeholder
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          sed -i "s|{{full_repo_name}}|${REPO}|g" README.md
+
+      - name: Remove Copy Exercise section
+        run: |
+          sed -i '/<!-- COPY_EXERCISE_START -->/,/<!-- COPY_EXERCISE_END -->/d' README.md
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: initialize repository for ${{ github.actor }}"
+            git push
+          fi
