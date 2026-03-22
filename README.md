@@ -10,20 +10,6 @@
 - **Prerequisites:** Familiarity with Java and VS Code; a GitHub account with Codespaces access.
 - **How long:** This lab takes approximately 1–2 hours to complete.
 
-<!-- COPY_EXERCISE_START -->
-## How to start this exercise
-
-> [!IMPORTANT]
-> Do **not** fork or clone this repo directly. Use **Copy Exercise** below to get your own clean copy, so that the Codespace badge and step instructions point to your repository.
-
- Click **Copy Exercise** :
-
-[![Copy Exercise](https://img.shields.io/badge/Copy%20Exercise-green?style=for-the-badge)](https://github.com/new?template_owner=mburakunuvar&template_name=ghcp-lab03-application-modernization&owner=%40me&name=lab03-application-modernization&description=Exercise:+Application+Modernization+with+GitHub+Copilot&visibility=public)
-
-After copying, wait a few seconds and refresh your new repository page. A GitHub Actions workflow will automatically personalize the Codespaces badge for your repository.
-
----
-<!-- COPY_EXERCISE_END -->
 
 ## Prerequisites- Codespaces Setup 
 
